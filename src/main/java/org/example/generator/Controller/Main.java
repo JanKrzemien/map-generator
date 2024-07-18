@@ -6,7 +6,7 @@ import org.apache.logging.log4j.LogManager;
 import javafx.fxml.FXML;
 
 public class Main {
-    private static Logger logger = LogManager.getLogger(Main.class);
+    private static final Logger logger = LogManager.getLogger(Main.class);
 
     @FXML
     public void initialize() {

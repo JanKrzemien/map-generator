@@ -2,7 +2,7 @@
 <Configuration status="info" name="mapy">
     <Appenders>
         <Console name="console" target="SYSTEM_OUT">
-            <PatternLayout pattern="%highlight{d{yyyy-MM-dd HH:mm:ss} %-5p %c{1}:%L - %m%n}{ERROR=RED, WARN=YELLOW, INFO=BLUE, DEBUG=GREEN}" disableAnsi="false"/>
+            <PatternLayout pattern="%highlight{%d{HH:mm:ss}{GMT+0} %-5p %c{1}:%L - %m%n}{ERROR=RED, WARN=YELLOW, INFO=BLUE, DEBUG=GREEN}" disableAnsi="false"/>
         </Console>
     </Appenders>
     <Loggers>

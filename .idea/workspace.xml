@@ -5,8 +5,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="aa4b7cdb-9f4c-489c-968f-0372cc696455" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/generator/config/AppConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/generator/config/AppConfigJSONDeserializer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/generator/config/JSONConfigReader.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/settings.default.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/generator/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/generator/App.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/generator/Controller/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/generator/Controller/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/generator/Controller/SettingsTab.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/generator/Controller/SettingsTab.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/log4j2.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/log4j2.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/example/generator/tab/file.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/example/generator/tab/file.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/example/generator/tab/map.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/example/generator/tab/map.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/example/generator/tab/module.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/example/generator/tab/module.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -16,8 +27,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="FxmlFile" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -51,11 +62,11 @@
 }</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\jan\Desktop\generator\src\main\java\org\example\generator" />
       <recent name="C:\Users\jan\Desktop\generator\src\main\resources" />
       <recent name="C:\Users\jan\Desktop\generator" />
       <recent name="C:\Users\jan\Desktop\generator\src" />
       <recent name="C:\Users\jan\Desktop\generator\src\main" />
-      <recent name="C:\Users\jan\Desktop\generator\src\main\resources\org\example\generator\tab" />
     </key>
   </component>
   <component name="RunManager">
