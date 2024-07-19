@@ -3,32 +3,22 @@
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
 
-<TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.generator.Controller.Main">
-  <tabs>
+<TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0"
+         prefWidth="600.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/22"
+         xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.generator.Controller.Main">
     <Tab text="Wellcum">
-      <content>
-        <fx:include source="tab/welcome.fxml" />
-      </content>
+        <fx:include source="tab/welcome.fxml"/>
     </Tab>
     <Tab text="mapa">
-      <content>
         <fx:include source="tab/map.fxml"/>
-      </content>
     </Tab>
-      <Tab text="moduły">
-         <content>
-             <fx:include source="tab/module.fxml"/>
-         </content>
-      </Tab>
-      <Tab text="pliki">
-         <content>
-             <fx:include source="tab/file.fxml"/>
-         </content>
-      </Tab>
-      <Tab text="ustawienia">
-         <content>
-            <fx:include source="tab/settings.fxml"/>
-         </content>
-      </Tab>
-  </tabs>
+    <Tab text="moduły">
+        <fx:include source="tab/module.fxml"/>
+    </Tab>
+    <Tab text="pliki">
+        <fx:include source="tab/file.fxml"/>
+    </Tab>
+    <Tab text="ustawienia">
+        <fx:include source="tab/settings.fxml"/>
+    </Tab>
 </TabPane>

@@ -5,19 +5,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="aa4b7cdb-9f4c-489c-968f-0372cc696455" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/generator/config/AppConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/generator/config/AppConfigJSONDeserializer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/generator/config/JSONConfigReader.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/settings.default.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/generator/Controller/Controller.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/generator/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/generator/App.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/generator/Controller/FileTab.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/generator/Controller/FileTab.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/generator/Controller/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/generator/Controller/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/generator/Controller/MapTab.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/generator/Controller/MapTab.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/generator/Controller/ModuleTab.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/generator/Controller/ModuleTab.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/generator/Controller/SettingsTab.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/generator/Controller/SettingsTab.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/log4j2.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/log4j2.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/org/example/generator/tab/file.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/example/generator/tab/file.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/org/example/generator/tab/map.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/example/generator/tab/map.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/org/example/generator/tab/module.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/example/generator/tab/module.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/generator/Controller/WelcomeTab.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/generator/Controller/WelcomeTab.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/generator/config/AppConfigJSONDeserializer.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/generator/config/JSONConfigReader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/generator/config/JSONConfigHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/example/generator/app.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/example/generator/app.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/example/generator/tab/settings.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/example/generator/tab/settings.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/settings.default.json" beforeDir="false" afterPath="$PROJECT_DIR$/settings.default.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,6 +29,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="FxmlFile" />
+        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
@@ -62,9 +64,9 @@
 }</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\jan\Desktop\generator" />
       <recent name="C:\Users\jan\Desktop\generator\src\main\java\org\example\generator" />
       <recent name="C:\Users\jan\Desktop\generator\src\main\resources" />
-      <recent name="C:\Users\jan\Desktop\generator" />
       <recent name="C:\Users\jan\Desktop\generator\src" />
       <recent name="C:\Users\jan\Desktop\generator\src\main" />
     </key>

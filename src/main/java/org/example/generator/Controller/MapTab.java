@@ -1,4 +1,9 @@
 package org.example.generator.Controller;
 
-public class MapTab {
+import org.example.generator.config.AppConfig;
+
+public class MapTab extends Controller {
+    public MapTab(AppConfig cfg) {
+        super(cfg);
+    }
 }

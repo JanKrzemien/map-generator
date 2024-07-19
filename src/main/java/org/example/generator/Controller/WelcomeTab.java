@@ -1,4 +1,9 @@
 package org.example.generator.Controller;
 
-public class WelcomeTab {
+import org.example.generator.config.AppConfig;
+
+public class WelcomeTab extends Controller {
+    public WelcomeTab(AppConfig cfg) {
+        super(cfg);
+    }
 }
