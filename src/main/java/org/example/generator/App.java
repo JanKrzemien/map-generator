@@ -8,10 +8,14 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import java.io.*;
 import java.lang.reflect.InvocationTargetException;
+import java.util.ArrayList;
+
 import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.LogManager;
 import org.example.generator.config.AppConfig;
 import org.example.generator.config.JSONConfigHandler;
+import org.example.generator.tiles.JSONTilesHandler;
+import org.example.generator.tiles.Tile;
 
 public class App extends Application {
     private static final Logger logger = LogManager.getLogger(App.class);
@@ -28,6 +32,7 @@ public class App extends Application {
         logger.info("app's fxml loaded.");
 
         // load apps config
+        //TODO make a method out of this
         try {
             File settingsFile;
             JSONConfigHandler configHandler = new JSONConfigHandler();
@@ -51,6 +56,36 @@ public class App extends Application {
             System.exit(-1);
         }
 
+        // load file with tiles
+        //TODO make a method out of this
+        ArrayList<Tile> tiles = new ArrayList<>();
+        try {
+            File tilesFile;
+            JSONTilesHandler tilesHandler = new JSONTilesHandler();
+            tilesFile = new File(JSONTilesHandler.TILES_FILE);
+            if (tilesFile.isFile())
+                tiles.addAll(tilesHandler.load_from_file(JSONTilesHandler.TILES_FILE));
+            else { // if tiles file doesn't exist create it with empty json string {}
+                try (BufferedWriter bw = new BufferedWriter(new FileWriter(tilesFile))) {
+                    bw.write("[]");
+                } catch (IOException e) {
+                    logger.error("error while writing empty json to new file.\n", e);
+                }
+            }
+        } catch (JsonParseException ex) {
+            logger.error("Could not parse tiles file.");
+            System.exit(-1);
+        } catch (Exception e) {
+            logger.error("something that shouldn't have happened.\n", e);
+            System.exit(-1);
+        }
+        if (config == null) {  // by this point config should be checked and not null
+            logger.error("what the fuck happened");
+            System.exit(-1);
+        }
+        config.setTiles(tiles);
+
+
         // create and add scene
         fxmlLoader.setControllerFactory(c -> {
             try {
@@ -61,7 +96,7 @@ public class App extends Application {
             }
         });
         Parent root = fxmlLoader.load();
-        Scene scene = new Scene(root, 320, 240);
+        Scene scene = new Scene(root);
         stage.setTitle("Kiełbasa!");
         stage.setScene(scene);
         logger.info("scene created and set.");

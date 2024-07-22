@@ -1,6 +1,11 @@
 package org.example.generator.config;
 
+import org.example.generator.tiles.Tile;
+import java.util.ArrayList;
+
 public class AppConfig {
+    private ArrayList<Tile> tiles;
+
     private int tile_size;
     private String tile_shape;
 
@@ -8,6 +13,13 @@ public class AppConfig {
     public int getTile_size() {return tile_size;}
     public void setTile_shape(String shape) {tile_shape = shape;}
     public String getTile_shape() { return tile_shape;}
+
+    public ArrayList<Tile> getTiles() {
+        return tiles;
+    }
+    public void setTiles(ArrayList<Tile> tiles) {
+        this.tiles = tiles;
+    }
 
     @Override
     public String toString() {
