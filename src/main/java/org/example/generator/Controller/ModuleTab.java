@@ -19,6 +19,8 @@ import java.io.FileNotFoundException;
 public class ModuleTab extends Controller {
     private static final Logger logger = LogManager.getLogger(ModuleTab.class);
 
+    private TileImageView selectedTileView = null;
+
     @FXML
     private FlowPane imageListView;
     @FXML
@@ -35,8 +37,20 @@ public class ModuleTab extends Controller {
     }
 
     private final EventHandler<MouseEvent> clickEventHandler = (MouseEvent mouseEvent) -> {
-        logger.debug(((TileImageView)mouseEvent.getSource()).getTileObj().toString());
         mouseEvent.consume();
+
+        if(selectedTileView != null)
+            selectedTileView.getStyleClass().remove("single_selected");
+
+        if (selectedTileView == mouseEvent.getSource()){
+            selectedTileView = null;
+            return;
+        }
+
+        selectedTileView = (TileImageView) mouseEvent.getSource();
+        selectedTileView.getStyleClass().add("single_selected");
+
+        logger.debug(selectedTileView.toString());
     };
 
     private void displayImages() {

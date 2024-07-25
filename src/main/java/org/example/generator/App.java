@@ -20,6 +20,8 @@ import org.example.generator.tiles.Tile;
 public class App extends Application {
     private static final Logger logger = LogManager.getLogger(App.class);
 
+    private final static String STYLES_FILE_PATH = "styles.css";
+
     private AppConfig config = null;
     public AppConfig getConfig() {
         return config;
@@ -97,6 +99,7 @@ public class App extends Application {
         });
         Parent root = fxmlLoader.load();
         Scene scene = new Scene(root);
+        scene.getStylesheets().add(String.valueOf(App.class.getResource("styles.css")));
         stage.setTitle("Kiełbasa!");
         stage.setScene(scene);
         logger.info("scene created and set.");

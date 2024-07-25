@@ -1,4 +1,4 @@
 {
-  "tile_size": 64,
+  "tile_size": 128,
   "tile_shape": "square"
 }

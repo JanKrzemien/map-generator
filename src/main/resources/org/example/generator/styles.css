@@ -1,0 +1,7 @@
+.single_selected {
+    -fx-opacity: 0.3;
+}
+.multiple_selected {
+    -fx-border-color: green;
+    -fx-border-width: 5;
+}
