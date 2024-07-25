@@ -55,7 +55,7 @@ public class JSONTilesHandler implements JsonDeserializer<Tile[]>, JsonSerialize
         try (FileWriter writer = new FileWriter(path)) {
             writer.write(gson.toJson(tiles));
 
-            logger.info("wrote app configuration to {} file.", path);
+            logger.info("wrote tiles to {} file.", path);
         } catch (IOException e) {
             logger.error("IOException while writing app config.\n", e);
         }

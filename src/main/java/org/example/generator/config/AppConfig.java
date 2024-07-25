@@ -1,15 +1,11 @@
 package org.example.generator.config;
 
 import javafx.beans.property.SimpleIntegerProperty;
-import javafx.beans.property.SimpleListProperty;
 import javafx.beans.property.SimpleStringProperty;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-import org.example.generator.tiles.Tile;
-import java.util.ArrayList;
+import org.example.generator.tiles.TileManager;
 
 public class AppConfig {
-    private SimpleListProperty<Tile> tiles;
+    private TileManager tileManager;
 
     private SimpleIntegerProperty tile_size;
     private SimpleStringProperty tile_shape;
@@ -17,7 +13,7 @@ public class AppConfig {
     public AppConfig() {
         tile_size = new SimpleIntegerProperty(-1);
         tile_shape = new SimpleStringProperty("");
-        tiles = new SimpleListProperty<>();
+        tileManager = new TileManager();
     }
 
     public void setTile_size(int size) {tile_size.set(size);}
@@ -27,13 +23,7 @@ public class AppConfig {
     public String getTile_shape() { return tile_shape.getValue();}
     public SimpleStringProperty getTile_shapeObj() { return tile_shape; }
 
-    public ArrayList<Tile> getTiles() { return new ArrayList<>(this.tiles); }
-    public SimpleListProperty<Tile> getTilesObservableObj() {return tiles;}
-    public void setTiles(ArrayList<Tile> tiles) {
-        this.tiles.clear(); // not efficient as fuck, but currently I don't know how to do It better with SimpleListProperty
-        ObservableList<Tile> observableList = FXCollections.observableArrayList(tiles);
-        this.tiles.setValue(observableList);
-    }
+    public TileManager getTileManager() {return tileManager;}
 
     @Override
     public String toString() {

@@ -13,6 +13,7 @@ import org.example.generator.tiles.Tile;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.List;
 
 public class FileTab extends Controller {
     private static final Logger logger = LogManager.getLogger(FileTab.class);
@@ -33,7 +34,11 @@ public class FileTab extends Controller {
         fc.getExtensionFilters().addAll(extFilterJPG, extFilterjpg, extFilterPNG, extFilterpng);
 
         // get selected files
-        ArrayList<File> uploadedFiles = new ArrayList<>(fc.showOpenMultipleDialog(new Stage()));
+        List<File> files = fc.showOpenMultipleDialog(new Stage());
+        if(files == null)
+            return;
+
+        ArrayList<File> uploadedFiles = new ArrayList<>(files);
 
         // display how many files got uploaded
         uploadFilesLabel.setText("Wgrano " + uploadedFiles.size() + " plików.");
@@ -43,12 +48,10 @@ public class FileTab extends Controller {
         uploadedFiles.forEach(f -> newTiles.add(new Tile(f.getPath())));
 
         // add new tiles to config
-        ArrayList<Tile> tiles = getConfig().getTiles();
-        tiles.addAll(newTiles);
-        getConfig().setTiles(tiles);
+        getConfig().getTileManager().addTiles(newTiles);
 
         // write updated tiles from config to file
-        tilesHandler.write_to_file(JSONTilesHandler.TILES_FILE, getConfig().getTiles());
+        tilesHandler.write_to_file(JSONTilesHandler.TILES_FILE, getConfig().getTileManager().getTiles());
     }
 
     public FileTab(AppConfig cfg) {

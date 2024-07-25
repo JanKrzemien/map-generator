@@ -28,6 +28,8 @@
                         <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                            <children>
                               <Button mnemonicParsing="false" text="Usuń" />
+                              <Button mnemonicParsing="false" text="Wybierz do zmiany" />
+                              <Button mnemonicParsing="false" text="Zapisz" />
                            </children>
                         </HBox>
                         <AnchorPane fx:id="tileRulesetPane" prefHeight="300.0" prefWidth="329.0" />

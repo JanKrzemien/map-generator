@@ -5,10 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="aa4b7cdb-9f4c-489c-968f-0372cc696455" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/generator/tiles/TileManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/generator/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/generator/App.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/generator/Controller/FileTab.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/generator/Controller/FileTab.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/generator/Controller/ModuleTab.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/generator/Controller/ModuleTab.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/generator/config/AppConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/generator/config/AppConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/generator/tiles/JSONTilesHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/generator/tiles/JSONTilesHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/generator/tiles/Tile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/generator/tiles/Tile.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/org/example/generator/tab/module.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/example/generator/tab/module.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tiles.json" beforeDir="false" afterPath="$PROJECT_DIR$/tiles.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tiles.json" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

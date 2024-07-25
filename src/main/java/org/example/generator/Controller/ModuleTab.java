@@ -21,11 +21,11 @@ public class ModuleTab extends Controller {
     private FlowPane imageListView;
     @FXML
     private AnchorPane tileRulesetPane;
-
+    
     @FXML
     public void initialize() {
         displayImages();
-        getConfig().getTilesObservableObj().addListener((observed, old_value, new_value) -> displayImages());
+        getConfig().getTileManager().getObservableTilesList().addListener((observed, old_value, new_value) -> displayImages());
         getConfig().getTile_sizeObj().addListener((observed, old_value, new_value) -> {
             imageListView.getChildren().forEach((imgView) -> {
                 ((ImageView)imgView).setFitHeight((int)new_value);
@@ -36,7 +36,7 @@ public class ModuleTab extends Controller {
 
     private void displayImages() {
         imageListView.getChildren().clear();
-        getConfig().getTiles().forEach((Tile t) -> {
+        getConfig().getTileManager().getObservableTilesList().forEach((Tile t) -> {
             try {
                 ImageView tile = new ImageView( new Image(new FileInputStream(t.getPath())) );
                 tile.setFitWidth(getConfig().getTile_size());

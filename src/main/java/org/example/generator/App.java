@@ -83,7 +83,7 @@ public class App extends Application {
             logger.error("what the fuck happened");
             System.exit(-1);
         }
-        config.setTiles(tiles);
+        config.getTileManager().addTiles(tiles);
 
 
         // create and add scene

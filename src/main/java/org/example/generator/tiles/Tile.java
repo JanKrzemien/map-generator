@@ -10,35 +10,38 @@ import java.util.ArrayList;
 public class Tile implements JsonDeserializer<Tile>, JsonSerializer<Tile> {
     private static final Logger logger = LogManager.getLogger(Tile.class);
 
-//    private long id;
+    private int id;
     private String path;
     private ArrayList<Ruleset> rulesets;
 
-//    public Tile(long id, String path) {
     public Tile(String path) {
-//        this.id = id;
+        this.id = -1;
         this.path = path;
         this.rulesets = new ArrayList<>();
     }
-    //    public Tile(long id, String path, ArrayList<Ruleset> rulesets) {
-    public Tile(String path, ArrayList<Ruleset> rulesets) {
-//        this.id = id;
+    public Tile(int id, String path) {
+        this.id = id;
+        this.path = path;
+        this.rulesets = new ArrayList<>();
+    }
+    public Tile(int id, String path, ArrayList<Ruleset> rulesets) {
+        this.id = id;
         this.path = path;
         this.rulesets = rulesets;
     }
 
     public ArrayList<Ruleset> getRulesets() { return rulesets; }
-//    public long getId() { return id; }
+    public int getId() { return id; }
     public String getPath() { return path; }
 
-//    public void setId(int id) { this.id = id; }
+    public void setId(int id) { this.id = id; }
     public void setPath(String path) { this.path = path; }
     public void setRulesets(ArrayList<Ruleset> rulesets) { this.rulesets = rulesets; }
 
     @Override
     public JsonElement serialize(Tile tile, Type type, JsonSerializationContext jsonSerializationContext) {
         JsonObject obj = new JsonObject();
-//        obj.addProperty("id", tile.getId());
+        obj.addProperty("id", tile.getId());
         obj.addProperty("path", tile.getPath());
 
         JsonArray rulesetArr = new JsonArray();
@@ -62,12 +65,13 @@ public class Tile implements JsonDeserializer<Tile>, JsonSerializer<Tile> {
             rs.add(gson.fromJson(ruleset, Ruleset.class));
         }
 
-        return new Tile(tileJsonObj.get("path").getAsString(), rs);
+        return new Tile(tileJsonObj.get("id").getAsInt(), tileJsonObj.get("path").getAsString(), rs);
     }
 
     @Override
     public String toString() {
         return "Tile{" +
+                "id=" + id +
                 "path='" + path + '\'' +
                 ", rulesets=" + rulesets +
                 '}';
