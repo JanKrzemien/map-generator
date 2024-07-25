@@ -19,13 +19,18 @@ public class TileManager {
     public void addTiles(ArrayList<Tile> tiles) {
         // not efficient as fuck, but currently I don't know how to do It better with SimpleListProperty
         ArrayList<Tile> oldTiles = new ArrayList<>(this.tiles);
-        for (Tile t : tiles) {
-            if (t.getId() < currentLastId) {
-                t.setId( currentLastId );
-                currentLastId++;
-            } else
+        for(Tile t : oldTiles)
+            if (t.getId() > currentLastId)
+                currentLastId = t.getId();
+        for(Tile t : tiles)
+            if (t.getId() > currentLastId)
                 currentLastId = t.getId();
 
+        for (Tile t : tiles) {
+            if (t.getId() == -1) {
+                t.setId( currentLastId );
+                currentLastId++;
+            }
             oldTiles.add(t);
         }
         this.tiles.clear();

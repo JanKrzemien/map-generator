@@ -8,6 +8,7 @@ module org.example.generator {
     requires org.kordamp.bootstrapfx.core;
     requires org.apache.logging.log4j;
     requires com.google.gson;
+    requires java.desktop;
 
     opens org.example.generator to javafx.fxml;
     exports org.example.generator;

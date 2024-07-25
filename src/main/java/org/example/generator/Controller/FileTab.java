@@ -18,7 +18,7 @@ import java.util.List;
 public class FileTab extends Controller {
     private static final Logger logger = LogManager.getLogger(FileTab.class);
 
-    private JSONTilesHandler tilesHandler;
+    private final JSONTilesHandler tilesHandler;
 
     @FXML
     private Label uploadFilesLabel;
@@ -44,7 +44,7 @@ public class FileTab extends Controller {
         uploadFilesLabel.setText("Wgrano " + uploadedFiles.size() + " plików.");
 
         // for each File create Tile with constructor
-        ArrayList<Tile> newTiles = new ArrayList<Tile>();
+        ArrayList<Tile> newTiles = new ArrayList<>();
         uploadedFiles.forEach(f -> newTiles.add(new Tile(f.getPath())));
 
         // add new tiles to config

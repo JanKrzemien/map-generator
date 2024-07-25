@@ -5,10 +5,10 @@ import javafx.beans.property.SimpleStringProperty;
 import org.example.generator.tiles.TileManager;
 
 public class AppConfig {
-    private TileManager tileManager;
+    private final TileManager tileManager;
 
-    private SimpleIntegerProperty tile_size;
-    private SimpleStringProperty tile_shape;
+    private final SimpleIntegerProperty tile_size;
+    private final SimpleStringProperty tile_shape;
 
     public AppConfig() {
         tile_size = new SimpleIntegerProperty(-1);
