@@ -12,6 +12,8 @@ module org.example.generator {
 
     opens org.example.generator to javafx.fxml;
     exports org.example.generator;
+    opens org.example.generator.tiles to javafx.fxml;
+    exports org.example.generator.tiles;
     exports org.example.generator.Controller;
     opens org.example.generator.Controller to javafx.fxml;
     exports org.example.generator.config;
