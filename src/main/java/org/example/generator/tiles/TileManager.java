@@ -5,7 +5,6 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.example.generator.Controller.FileTab;
 
 import java.util.ArrayList;
 import java.util.Objects;
@@ -15,33 +14,18 @@ public class TileManager {
 
     private final JSONTilesHandler tilesHandler;
 
-    private final SimpleListProperty<Tile> tiles;
+    private final SimpleListProperty<Tile> tilesObservable; // TODO check if you can turn it into dict
 
     public TileManager() {
-        tiles = new SimpleListProperty<>();
+        tilesObservable = new SimpleListProperty<>();
         tilesHandler = new JSONTilesHandler();
     }
 
-    public ArrayList<Tile> getTiles() { return new ArrayList<>(this.tiles); }
-    public SimpleListProperty<Tile> getObservableTilesList() {return tiles;}
-    public void addTile(Tile t) {
-        // not efficient as fuck, but currently I don't know how to do It better with SimpleListProperty
-        ArrayList<Tile> oldTiles = new ArrayList<>(this.tiles);
-
-        if (checkIfTileNameIsUnique(t.getName()))
-            oldTiles.add(t);
-        else
-            logger.warn("tile with image path {} doesn't have unique name so it's not added.", t.getPath());
-
-        this.tiles.clear();
-        ObservableList<Tile> observableList = FXCollections.observableArrayList(oldTiles);
-        this.tiles.setValue(observableList);
-
-        tilesHandler.write_to_file(JSONTilesHandler.TILES_FILE, getTiles());
-    }
+    public ArrayList<Tile> getTiles() { return new ArrayList<>(this.tilesObservable); }
+    public SimpleListProperty<Tile> getObservableTilesList() {return tilesObservable;}
     public void addTiles(ArrayList<Tile> tiles) {
         // not efficient as fuck, but currently I don't know how to do It better with SimpleListProperty
-        ArrayList<Tile> oldTiles = new ArrayList<>(this.tiles);
+        ArrayList<Tile> oldTiles = new ArrayList<>(this.tilesObservable);
 
         for (Tile t : tiles) {
             if (checkIfTileNameIsUnique(t.getName()))
@@ -49,27 +33,29 @@ public class TileManager {
             else
                 logger.warn("tile with image path {} doesn't have unique name so it's not added.", t.getPath());
         }
-        this.tiles.clear();
+        this.tilesObservable.clear();
         ObservableList<Tile> observableList = FXCollections.observableArrayList(oldTiles);
-        this.tiles.setValue(observableList);
+        this.tilesObservable.setValue(observableList);
 
         tilesHandler.write_to_file(JSONTilesHandler.TILES_FILE, getTiles());
     }
     public void removeTiles(ArrayList<Tile> tiles) {
         // not efficient as fuck, but currently I don't know how to do It better with SimpleListProperty
-        ArrayList<Tile> oldTiles = new ArrayList<>(this.tiles);
+        ArrayList<Tile> oldTiles = new ArrayList<>(this.tilesObservable);
         for (Tile t : tiles)
             oldTiles.remove(t);
-        this.tiles.clear();
+        this.tilesObservable.clear();
         ObservableList<Tile> observableList = FXCollections.observableArrayList(oldTiles);
-        this.tiles.setValue(observableList);
+        this.tilesObservable.setValue(observableList);
+
+        tilesHandler.write_to_file(JSONTilesHandler.TILES_FILE, getTiles());
     }
 
     public boolean checkIfTileNameIsUnique(String name) {
-        for (Tile t : tiles) {
+        for (Tile t : tilesObservable)
             if (Objects.equals(t.getName(), name))
                 return false;
-        }
+
         return true;
     }
 }

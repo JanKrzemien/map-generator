@@ -1,38 +1,65 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.FlowPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.generator.Controller.ModuleTab">
+<AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="400.0" minWidth="600.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.generator.Controller.ModuleTab">
    <children>
-      <SplitPane dividerPositions="0.44481605351170567" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="400.0" prefWidth="600.0">
+      <SplitPane dividerPositions="0.44481605351170567" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="400.0" minWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <items>
-            <AnchorPane prefHeight="400.0" prefWidth="165.0">
+            <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="400.0" minWidth="165.0">
                <children>
-                  <ScrollPane prefHeight="400.0" prefWidth="263.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <ScrollPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <content>
-                        <FlowPane fx:id="imageListView" prefHeight="398.0" prefWidth="249.0" />
+                        <FlowPane fx:id="imageListView" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" />
                      </content>
                   </ScrollPane>
                </children>
             </AnchorPane>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="398.0" prefWidth="339.0">
+          <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="400.0" minWidth="339.0">
                <children>
                   <VBox alignment="TOP_CENTER" prefHeight="398.0" prefWidth="329.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <children>
-                        <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                        <HBox alignment="CENTER" prefHeight="51.0" prefWidth="329.0">
                            <children>
-                              <Button mnemonicParsing="false" text="Usuń" />
-                              <Button mnemonicParsing="false" text="Wybierz do zmiany" />
-                              <Button mnemonicParsing="false" text="Zapisz" />
+                              <Button mnemonicParsing="false" onAction="#removeTile" text="Usuń" />
                            </children>
                         </HBox>
-                        <AnchorPane fx:id="tileRulesetPane" prefHeight="300.0" prefWidth="329.0" />
+                        <Separator prefWidth="200.0" />
+                        <VBox prefHeight="352.0" prefWidth="329.0">
+                           <children>
+                              <VBox prefHeight="200.0" prefWidth="100.0">
+                                 <children>
+                                    <HBox prefHeight="28.0" prefWidth="329.0">
+                                       <children>
+                                          <Label text="liczba kolumn" />
+                                          <TextField fx:id="columnNumField" />
+                                       </children>
+                                    </HBox>
+                                    <HBox prefHeight="28.0" prefWidth="329.0">
+                                       <children>
+                                          <Label text="liczba wierszy" />
+                                          <TextField fx:id="rowNumField" />
+                                       </children>
+                                    </HBox>
+                                    <Button fx:id="createTableBtn" mnemonicParsing="false" text="stwórz siatkę" />
+                                 </children>
+                              </VBox>
+                              <AnchorPane fx:id="tableContainer" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="373.0" minWidth="412.0" VBox.vgrow="ALWAYS">
+                                 <children>
+                                    <ScrollPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="261.0" minWidth="412.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                 </children>
+                              </AnchorPane>
+                           </children>
+                        </VBox>
                      </children>
                   </VBox>
                </children>

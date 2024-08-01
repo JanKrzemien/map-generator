@@ -12,6 +12,7 @@ import org.example.generator.config.AppConfig;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
 import java.util.function.Consumer;
 
 public class TileSaveNameCardController {
@@ -57,9 +58,11 @@ public class TileSaveNameCardController {
         if (!cfg.getTileManager().checkIfTileNameIsUnique(name))
             return;
 
-        cfg.getTileManager().addTile(new Tile(name, file.getPath()));
+
+        ArrayList<Tile> newTiles = new ArrayList<>();
+        newTiles.add(new Tile(name, file.getPath()));
+        cfg.getTileManager().addTiles(newTiles);
 
         removeAction.accept(tileNameCardRoot);
     }
-
 }

@@ -72,7 +72,7 @@ public class Tile implements JsonDeserializer<Tile>, JsonSerializer<Tile> {
     public String toString() {
         return "Tile{" +
                 "name=" + name +
-                "path='" + path + '\'' +
+                ", path='" + path + '\'' +
                 ", rulesets=" + rulesets +
                 '}';
     }

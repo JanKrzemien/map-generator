@@ -5,7 +5,6 @@ import javafx.fxml.FXML;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.FlowPane;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -15,6 +14,7 @@ import org.example.generator.tiles.TileImageView;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
 
 public class ModuleTab extends Controller {
     private static final Logger logger = LogManager.getLogger(ModuleTab.class);
@@ -23,8 +23,6 @@ public class ModuleTab extends Controller {
 
     @FXML
     private FlowPane imageListView;
-    @FXML
-    private AnchorPane tileRulesetPane;
     
     @FXML
     public void initialize() {
@@ -50,7 +48,7 @@ public class ModuleTab extends Controller {
         selectedTileView = (TileImageView) mouseEvent.getSource();
         selectedTileView.getStyleClass().add("single_selected");
 
-        logger.debug(selectedTileView.toString());
+        logger.debug(selectedTileView.getTileObj().toString());
     };
 
     private void displayImages() {
@@ -71,5 +69,14 @@ public class ModuleTab extends Controller {
 
     public ModuleTab(AppConfig cfg) {
         super(cfg);
+    }
+
+    public void removeTile() {
+        if (selectedTileView == null)
+            return;
+
+        ArrayList<Tile> toBeDeleted = new ArrayList<>();
+        toBeDeleted.add(selectedTileView.getTileObj());
+        getConfig().getTileManager().removeTiles(toBeDeleted);
     }
 }

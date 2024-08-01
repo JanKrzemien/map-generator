@@ -12,7 +12,6 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.example.generator.App;
 import org.example.generator.config.AppConfig;
-import org.example.generator.tiles.JSONTilesHandler;
 import org.example.generator.tiles.TileSaveNameCardController;
 
 import java.io.File;
@@ -59,7 +58,6 @@ public class FileTab extends Controller {
             } catch (Exception ex) {
                 logger.error("fucked it's self over.\n", ex);
             }
-
         });
     }
 
