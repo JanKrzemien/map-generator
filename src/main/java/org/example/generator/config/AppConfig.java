@@ -1,10 +1,16 @@
 package org.example.generator.config;
 
+import com.google.gson.*;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import org.example.generator.tiles.TileManager;
 
-public class AppConfig {
+import java.lang.reflect.Type;
+
+public class AppConfig implements JsonDeserializer<AppConfig>, JsonSerializer<AppConfig> {
+    final public static String DEFAULT_SETTINGS_PATH = "./settings.default.json";
+    final public static String USER_SETTINGS_PATH = "./settings.json";
+
     private final TileManager tileManager;
 
     private final SimpleIntegerProperty tile_size;
@@ -28,5 +34,23 @@ public class AppConfig {
     @Override
     public String toString() {
         return "tile_size: " + tile_size + ",\ntile_shape: " + tile_shape;
+    }
+
+    @Override
+    public AppConfig deserialize(JsonElement jsonElement, Type type, JsonDeserializationContext jsonDeserializationContext) throws JsonParseException {
+        JsonObject jsonObject = JsonParser.parseString(String.valueOf(jsonElement)).getAsJsonObject();
+
+        AppConfig c = new AppConfig();
+        c.setTile_size(jsonObject.get("tile_size").getAsInt());
+        c.setTile_shape(jsonObject.get("tile_shape").getAsString());
+        return c;
+    }
+
+    @Override
+    public JsonElement serialize(AppConfig appConfig, Type type, JsonSerializationContext jsonSerializationContext) {
+        JsonObject obj = new JsonObject();
+        obj.addProperty("tile_size", appConfig.getTile_size());
+        obj.addProperty("tile_shape", appConfig.getTile_shape());
+        return obj;
     }
 }

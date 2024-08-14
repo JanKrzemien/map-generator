@@ -9,14 +9,14 @@ import javafx.scene.control.ToggleGroup;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.example.generator.config.AppConfig;
-import org.example.generator.config.JSONConfigHandler;
+import org.example.generator.util.JSONHandler;
 
 import java.util.Objects;
 
 public class SettingsTab extends Controller {
     private static final Logger logger = LogManager.getLogger(SettingsTab.class);
 
-    JSONConfigHandler configHandler;
+    JSONHandler<AppConfig> configHandler;
 
     @FXML
     private Button saveSettingsBtn;
@@ -32,7 +32,7 @@ public class SettingsTab extends Controller {
     public SettingsTab(AppConfig cfg) {
         super(cfg);
 
-        configHandler = new JSONConfigHandler();
+        configHandler = new JSONHandler<>(AppConfig.class);
     }
 
     @FXML
@@ -71,7 +71,7 @@ public class SettingsTab extends Controller {
 
         getConfig().setTile_shape(radioBtnValue);
 
-        configHandler.write_to_file(JSONConfigHandler.USER_SETTINGS_PATH, getConfig());
+        configHandler.write_to_file(AppConfig.USER_SETTINGS_PATH, getConfig());
     }
 
     private String radioBtnValue;

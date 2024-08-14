@@ -5,6 +5,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.example.generator.util.JSONHandler;
 
 import java.util.ArrayList;
 import java.util.Objects;
@@ -12,13 +13,13 @@ import java.util.Objects;
 public class TileManager {
     private static final Logger logger = LogManager.getLogger(TileManager.class);
 
-    private final JSONTilesHandler tilesHandler;
+    private final JSONHandler<ArrayOfTiles> tilesHandler;
 
     private final SimpleListProperty<Tile> tilesObservable; // TODO check if you can turn it into dict
 
     public TileManager() {
         tilesObservable = new SimpleListProperty<>();
-        tilesHandler = new JSONTilesHandler();
+        tilesHandler = new JSONHandler<>(ArrayOfTiles.class);
     }
 
     public ArrayList<Tile> getTiles() { return new ArrayList<>(this.tilesObservable); }
@@ -37,7 +38,7 @@ public class TileManager {
         ObservableList<Tile> observableList = FXCollections.observableArrayList(oldTiles);
         this.tilesObservable.setValue(observableList);
 
-        tilesHandler.write_to_file(JSONTilesHandler.TILES_FILE, getTiles());
+        tilesHandler.write_to_file(ArrayOfTiles.TILES_FILE, new ArrayOfTiles(getTiles()));
     }
     public void removeTiles(ArrayList<Tile> tiles) {
         // not efficient as fuck, but currently I don't know how to do It better with SimpleListProperty
@@ -48,7 +49,7 @@ public class TileManager {
         ObservableList<Tile> observableList = FXCollections.observableArrayList(oldTiles);
         this.tilesObservable.setValue(observableList);
 
-        tilesHandler.write_to_file(JSONTilesHandler.TILES_FILE, getTiles());
+        tilesHandler.write_to_file(ArrayOfTiles.TILES_FILE, new ArrayOfTiles(getTiles()));
     }
 
     public boolean checkIfTileNameIsUnique(String name) {

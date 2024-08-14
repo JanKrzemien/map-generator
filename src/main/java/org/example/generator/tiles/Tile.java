@@ -14,6 +14,12 @@ public class Tile implements JsonDeserializer<Tile>, JsonSerializer<Tile> {
     private String path;
     private ArrayList<Ruleset> rulesets;
 
+    public Tile() {
+        this.name = "";
+        this.path = "";
+        this.rulesets = new ArrayList<>();
+    }
+
     public Tile(String path) {
         this.name = "";
         this.path = path;
