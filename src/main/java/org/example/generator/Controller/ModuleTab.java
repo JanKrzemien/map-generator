@@ -27,7 +27,7 @@ public class ModuleTab extends Controller {
     @FXML
     public void initialize() {
         displayImages();
-        getConfig().getTileManager().getObservableTilesList().addListener((observed, old_value, new_value) -> displayImages());
+        getConfig().getTileManager().getObservableTileDict().addListener((observed, old_value, new_value) -> displayImages());
         getConfig().getTile_sizeObj().addListener((observed, old_value, new_value) -> imageListView.getChildren().forEach((imgView) -> {
             ((ImageView)imgView).setFitHeight((int)new_value);
             ((ImageView)imgView).setFitWidth((int)new_value);
@@ -53,7 +53,7 @@ public class ModuleTab extends Controller {
 
     private void displayImages() {
         imageListView.getChildren().clear();
-        getConfig().getTileManager().getObservableTilesList().forEach((Tile t) -> {
+        getConfig().getTileManager().getObservableTileDict().getValue().values().forEach((Tile t) -> {
             try {
                 TileImageView tile = new TileImageView( new Image(new FileInputStream(t.getPath())), t );
                 tile.setFitWidth(getConfig().getTile_size());
