@@ -51,16 +51,20 @@ public class ModuleTab extends Controller {
         logger.debug(selectedTileView.getTileObj().toString());
     };
 
+    private TileImageView createTileImageView(Tile t) throws FileNotFoundException {
+        TileImageView tile = new TileImageView( new Image(new FileInputStream(t.getPath())), t );
+        tile.setFitWidth(getConfig().getTile_size());
+        tile.setFitHeight(getConfig().getTile_size());
+        tile.setPreserveRatio(false);
+        tile.addEventHandler(MouseEvent.MOUSE_CLICKED, clickEventHandler);
+        return tile;
+    }
+
     private void displayImages() {
         imageListView.getChildren().clear();
         getConfig().getTileManager().getObservableTileDict().getValue().values().forEach((Tile t) -> {
             try {
-                TileImageView tile = new TileImageView( new Image(new FileInputStream(t.getPath())), t );
-                tile.setFitWidth(getConfig().getTile_size());
-                tile.setFitHeight(getConfig().getTile_size());
-                tile.setPreserveRatio(false);
-                tile.addEventHandler(MouseEvent.MOUSE_CLICKED, clickEventHandler);
-                imageListView.getChildren().add(tile);
+                imageListView.getChildren().add( createTileImageView(t) );
             } catch (FileNotFoundException e) {
                 logger.error("error while reading image.\n", e);
             }

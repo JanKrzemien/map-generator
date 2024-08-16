@@ -35,17 +35,11 @@ public class SettingsTab extends Controller {
         configHandler = new JSONHandler<>(AppConfig.class);
     }
 
-    @FXML
-    public void initialize() {
-        logger.info("Settings controller initialize method.");
-
+    private void setValuesFromConfigFile() {
         tg = new ToggleGroup();
         squareRadioBtn.setToggleGroup(tg);
         hexRadioBtn.setToggleGroup(tg);
 
-        saveSettingsBtn.setOnAction(this::saveSettings);
-
-        // set values from config file
         tileSize.setText(Integer.toString( getConfig().getTile_size() ));
         if(Objects.equals(getConfig().getTile_shape(), "hex")) {
             hexRadioBtn.setSelected(true);
@@ -54,24 +48,55 @@ public class SettingsTab extends Controller {
             squareRadioBtn.setSelected(true);
             radioBtnValue = "square";
         }
+    }
 
+    @FXML
+    public void initialize() {
+        logger.info("Settings controller initialize method.");
+
+        saveSettingsBtn.setOnAction(this::saveSettings);
+
+        setValuesFromConfigFile();
+    }
+
+    private boolean inputIsValid(String radioBtnValue, TextField tileSize) {
+        if(Objects.equals(radioBtnValue, "") || Objects.equals(tileSize.getText(), ""))
+            return false;
+
+        try {
+            Integer.parseInt(tileSize.getText());
+        } catch (NumberFormatException ex) {
+            return false;
+        }
+
+        return true;
+    }
+
+    private Integer converTextFieldValueToInt(TextField textField) {
+        try {
+            return Integer.parseInt(textField.getText());
+        } catch (NumberFormatException ex) {
+            logger.error("couldn't convert text field value to int");
+        }
+        return null;
+    }
+
+    private void updateConfig(String radioBtnValue, int tileSize) {
+        getConfig().setTile_size(tileSize);
+        getConfig().setTile_shape(radioBtnValue);
+        configHandler.write_to_file(AppConfig.USER_SETTINGS_PATH, getConfig());
     }
 
     public void saveSettings(ActionEvent e) {
-        if(Objects.equals(radioBtnValue, "") || Objects.equals(tileSize.getText(), "")) {
+        if (!inputIsValid(radioBtnValue, tileSize))
             return; // TODO implement showing some error Alert or something
-        }
 
-        // update AppConfig object with current data
-        try {
-            getConfig().setTile_size(Integer.parseInt(tileSize.getText()));
-        } catch (NumberFormatException ex) {
-            return; // TODO implement showing some error Alert or something
-        }
 
-        getConfig().setTile_shape(radioBtnValue);
+        Integer tileSizeInt = converTextFieldValueToInt(tileSize);
+        if (tileSizeInt == null)
+            return; // this should never happen as tile size textField input should be checked properly
 
-        configHandler.write_to_file(AppConfig.USER_SETTINGS_PATH, getConfig());
+        updateConfig(radioBtnValue, tileSizeInt);
     }
 
     private String radioBtnValue;
