@@ -16,7 +16,6 @@ import org.example.generator.tiles.TileSaveNameCardController;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 public class FileTab extends Controller {
@@ -27,38 +26,42 @@ public class FileTab extends Controller {
     @FXML
     private FlowPane saveTileNameCardContainer;
 
-    public void uploadFilesHandler(ActionEvent e) {
-        FileChooser fc = new FileChooser();
-
-        //Set extension filter
+    private void setExtensionFilters(FileChooser fc) {
         FileChooser.ExtensionFilter extFilterJPG = new FileChooser.ExtensionFilter("JPG files (*.JPG)", "*.JPG");
         FileChooser.ExtensionFilter extFilterjpg = new FileChooser.ExtensionFilter("jpg files (*.jpg)", "*.jpg");
         FileChooser.ExtensionFilter extFilterPNG = new FileChooser.ExtensionFilter("PNG files (*.PNG)", "*.PNG");
         FileChooser.ExtensionFilter extFilterpng = new FileChooser.ExtensionFilter("png files (*.png)", "*.png");
         fc.getExtensionFilters().addAll(extFilterJPG, extFilterjpg, extFilterPNG, extFilterpng);
+    }
 
-        // get selected files
-        List<File> files = fc.showOpenMultipleDialog(new Stage());
-        if(files == null)
+    private List<File> getSelectedFiles(FileChooser fc) {
+        return fc.showOpenMultipleDialog(new Stage());
+    }
+
+    private void displaySaveNameCard(File f) {
+        try {
+            FXMLLoader saveTileNameLoader = new FXMLLoader(App.class.getResource("saveTileNameCard.fxml"));
+            saveTileNameLoader.setController(new TileSaveNameCardController(f, getConfig(), this::removeSaveTileNameCard));
+            saveTileNameCardContainer.getChildren().add(saveTileNameLoader.load());
+        } catch (IOException e) {
+            logger.error("could not load tile name card, IOException.\n", e);
+        } catch (Exception e) {
+            logger.error("fucked it's self over.\n", e);
+        }
+    }
+
+    public void uploadFilesHandler(ActionEvent e) {
+        FileChooser fc = new FileChooser();
+
+        setExtensionFilters(fc);
+
+        List<File> files = getSelectedFiles(fc);
+        if( files == null )
             return;
 
-        ArrayList<File> uploadedFiles = new ArrayList<>(files);
+        uploadFilesLabel.setText("Wgrano " + files.size() + " plików.");
 
-        // display how many files got uploaded
-        uploadFilesLabel.setText("Wgrano " + uploadedFiles.size() + " plików.");
-
-        // ask user to set name for each Tile
-        uploadedFiles.forEach(f -> {
-            try {
-                FXMLLoader saveTileNameLoader = new FXMLLoader(App.class.getResource("saveTileNameCard.fxml"));
-                saveTileNameLoader.setController(new TileSaveNameCardController(f, getConfig(), this::removeSaveTileNameCard));
-                saveTileNameCardContainer.getChildren().add(saveTileNameLoader.load());
-            } catch (IOException ex) {
-                logger.error("could not load tile name card, IOException.\n", ex);
-            } catch (Exception ex) {
-                logger.error("fucked it's self over.\n", ex);
-            }
-        });
+        files.forEach(this::displaySaveNameCard);
     }
 
     private void removeSaveTileNameCard(AnchorPane root) {

@@ -1,6 +1,5 @@
 package org.example.generator.Controller;
 
-import javafx.scene.Parent;
 import org.example.generator.config.AppConfig;
 
 public class Controller {
